@@ -28,7 +28,7 @@ function wordFrequency(str) {
     const char = str[i].toLowerCase();
     // Add the last word when the end of string is reached.
     if (i === str.length - 1) {
-      if (isLetter(char)) {
+      if (isLetterOrDigit(char)) {
         currentWordLen += 1;
       }
       addWord();
@@ -36,7 +36,7 @@ function wordFrequency(str) {
     } else if (char === " " || char === "\u2014") {
       addWord();
       // Add letter or apostraphe to current word.
-    } else if (isLetter(char) || char === "'") {
+    } else if (isLetterOrDigit(char) || char === "'") {
       if (currentWordLen === 0) {
         currentStartIdx = i;
       }
@@ -48,7 +48,7 @@ function wordFrequency(str) {
       }
       // hyphen surrounded by letters
     } else if (char === "-") {
-      if (i > 0 && isLetter(str[i - 1]) && isLetter(str[i + 1])) {
+      if (i > 0 && isLetterOrDigit(str[i - 1]) && isLetterOrDigit(str[i + 1])) {
         if (currentWordLen === 0) {
           currentStartIdx = i;
         }
@@ -60,16 +60,25 @@ function wordFrequency(str) {
       addWord();
     }
   }
+
+  // sort the counts and words into the sortedList array
   sortWords();
 
+  // print the sorted list of words and counts
   for (let i = 0; i < sortedList.length; i++) {
     console.log(`${sortedList[i][0]} ${sortedList[i][1]}`);
   }
-
-  function isLetter(char) {
+  /*
+  isLetterOrdigit checks if a character is a letter(a-z) or number(0-9)
+  */
+  function isLetterOrDigit(char) {
     return "abcdefghijklmnopqrstuvwxyz0123456789".indexOf(char) >= 0;
   }
 
+  /* 
+  addWord slices the current word from the input string and adds it to the frequency counter object. If the is already in the 
+  frequency counter object then the count is incremented by 1. 
+  */
   function addWord() {
     if (currentWordLen > 0) {
       const word = str
@@ -83,7 +92,9 @@ function wordFrequency(str) {
       }
     }
   }
-
+  /*
+  sortWords function creates an array of key,value pairs and sorts by value descending and then by key ascending for counts that are the same
+  */
   function sortWords() {
     sortedList = Object.entries(counts).sort((a, b) => {
       // sort values descending
@@ -100,6 +111,7 @@ function wordFrequency(str) {
 }
 
 let str1 = "This is a test. That is not a test. Test";
+console.log("\nstr1 output:")
 wordFrequency(str1);
 
 /* 
@@ -113,6 +125,7 @@ this 1
 
 let str2 = "From the moment the first immigrants arrived on these shores, generations of parents have worked hard and sacrificed whatever is necessary so that their children could have the same chances they had; or the chances they never had. Because while we could never ensure that our children would be rich or successful; while we could never be positive that they would do better than their parents, America is about making it possible to give them the chance. To give every child the opportunity to try. Education is still the foundation of this opportunity. And the most basic building block that holds that foundation together is still reading. At the dawn of the 21st century, in a world where knowledge truly is power and literacy is the skill that unlocks the gates of opportunity and success, we all have a responsibility as parents and librarians, educators and citizens, to instill in our children a love of reading so that we can give them the chance to fulfill their dreams."
 
+console.log("\nstr2 output:")
 wordFrequency(str2);
 
 /*
