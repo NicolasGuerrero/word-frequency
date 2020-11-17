@@ -1,9 +1,7 @@
 /*
-The wordFrequency function takes in a string of text and prints a list
-of unique words contained in the string along with the number of occurrences 
-of each word in the string.The list is sorted in descending order by 
-frequency, and ascending order alphabetically when multiple words occur 
-with the same frequency.
+The wordFrequency function takes in a string of text and prints a list of unique words contained in 
+the string along with the number of occurrences frequency, and ascending order alphabetically when 
+multiple words occur with the same frequency.
 
 Example:
 Input: 
@@ -104,7 +102,7 @@ function wordFrequency(str) {
 let str1 = "This is a test. That is not a test. Test";
 wordFrequency(str1);
 
-/*
+/* 
 test 3
 a 2
 is 2
