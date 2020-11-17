@@ -114,7 +114,8 @@ let str1 = "This is a test. That is not a test. Test";
 console.log("\nstr1 output:")
 wordFrequency(str1);
 
-/* 
+/*
+str1 output:
 test 3
 a 2
 is 2
@@ -129,6 +130,7 @@ console.log("\nstr2 output:")
 wordFrequency(str2);
 
 /*
+str2 output:
 the 13
 that 7
 and 6
