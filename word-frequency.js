@@ -32,8 +32,8 @@ function wordFrequency(str) {
         currentWordLen += 1;
       }
       addWord();
-      // Add word when space or emdash is reached.
-    } else if (char === " " || char === "\u2014") {
+      // Add word when space is reached.
+    } else if (char === " ") {
       addWord();
       // Add letter or apostraphe to current word.
     } else if (isLetterOrDigit(char) || char === "'") {
@@ -41,7 +41,7 @@ function wordFrequency(str) {
         currentStartIdx = i;
       }
       currentWordLen += 1;
-      // Add word if two periods in a row.
+      // Add word if two periods in a row(ellipses).
     } else if (char === ".") {
       if (i < str.length - 1 && str[i + 1] === ".") {
         addWord();
