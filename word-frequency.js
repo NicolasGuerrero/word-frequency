@@ -69,14 +69,14 @@ function wordFrequency(str) {
     console.log(`${sortedList[i][0]} ${sortedList[i][1]}`);
   }
   /*
-  isLetterOrdigit checks if a character is a letter(a-z) or number(0-9)
+  isLetterOrdigit function checks if a character is a letter(a-z) or number(0-9)
   */
   function isLetterOrDigit(char) {
     return "abcdefghijklmnopqrstuvwxyz0123456789".indexOf(char) >= 0;
   }
 
   /* 
-  addWord slices the current word from the input string and adds it to the frequency counter object. If the is already in the 
+  addWord function slices the current word from the input string and adds it to the frequency counter object. If the is already in the 
   frequency counter object then the count is incremented by 1. 
   */
   function addWord() {
